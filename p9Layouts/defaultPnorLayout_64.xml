@@ -308,14 +308,15 @@ Layout Description
         <description>PNOR Version (4K)</description>
         <eyeCatch>VERSION</eyeCatch>
         <physicalOffset>0x2A88000</physicalOffset>
-        <physicalRegionSize>0x1000</physicalRegionSize>
+        <physicalRegionSize>0x2000</physicalRegionSize>
         <side>A</side>
+        <sha512Version/>
         <readOnly/>
     </section>
     <section>
         <description>IMA Catalog (256K)</description>
         <eyeCatch>IMA_CATALOG</eyeCatch>
-        <physicalOffset>0x2A89000</physicalOffset>
+        <physicalOffset>0x2A8A000</physicalOffset>
         <physicalRegionSize>0x40000</physicalRegionSize>
         <side>A</side>
         <sha512Version/>
@@ -325,7 +326,7 @@ Layout Description
     <section>
         <description>Ref Image Ring Overrides (128K)</description>
         <eyeCatch>RINGOVD</eyeCatch>
-        <physicalOffset>0x2AC9000</physicalOffset>
+        <physicalOffset>0x2ACA000</physicalOffset>
         <physicalRegionSize>0x20000</physicalRegionSize>
         <side>A</side>
     </section>
@@ -334,7 +335,7 @@ Layout Description
         <!-- We need 266KB per module sort, going to support
              10 sorts by default, plus ECC  -->
         <eyeCatch>WOFDATA</eyeCatch>
-        <physicalOffset>0x2AE9000</physicalOffset>
+        <physicalOffset>0x2AEA000</physicalOffset>
         <physicalRegionSize>0x300000</physicalRegionSize>
         <side>A</side>
         <sha512Version/>
@@ -344,7 +345,7 @@ Layout Description
     <section>
         <description>Hostboot deconfig area (64KB)</description>
         <eyeCatch>HB_VOLATILE</eyeCatch>
-        <physicalOffset>0x2DE9000</physicalOffset>
+        <physicalOffset>0x2DEA000</physicalOffset>
         <physicalRegionSize>0x5000</physicalRegionSize>
         <side>A</side>
         <reprovision/>
@@ -355,7 +356,7 @@ Layout Description
     <section>
         <description>Memory config data (28K)</description>
         <eyeCatch>MEMD</eyeCatch>
-        <physicalOffset>0x2DEE000</physicalOffset>
+        <physicalOffset>0x2DEF000</physicalOffset>
         <physicalRegionSize>0xE000</physicalRegionSize>
         <side>A</side>
         <sha512Version/>
@@ -365,7 +366,7 @@ Layout Description
     <section>
         <description>SecureBoot Key Transition Partition (16K)</description>
         <eyeCatch>SBKT</eyeCatch>
-        <physicalOffset>0x2E02000</physicalOffset>
+        <physicalOffset>0x2E03000</physicalOffset>
         <physicalRegionSize>0x4000</physicalRegionSize>
         <side>A</side>
         <sha512Version/>
@@ -375,7 +376,7 @@ Layout Description
     <section>
         <description>HDAT binary data (16KB)</description>
         <eyeCatch>HDAT</eyeCatch>
-        <physicalOffset>0x2E06000</physicalOffset>
+        <physicalOffset>0x2E07000</physicalOffset>
         <physicalRegionSize>0x8000</physicalRegionSize>
         <side>sideless</side>
         <sha512Version/>
