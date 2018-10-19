@@ -160,12 +160,21 @@ Layout Description
         <ecc/>
     </section>
     <section>
-        <description>Hostboot Data (1.125M)</description>
-        <eyeCatch>HBD</eyeCatch>
+        <description>Hostboot Data - READ-ONLY (~819KB)</description>
+        <eyeCatch>HBD_RO</eyeCatch>
         <physicalOffset>0x305000</physicalOffset>
-        <physicalRegionSize>0x120000</physicalRegionSize>
+        <physicalRegionSize>0xFC000</physicalRegionSize>
         <side>A</side>
         <sha512Version/>
+        <readOnly/>
+        <ecc/>
+    </section>
+    <section>
+        <description>Hostboot Data - Read-Write (~333KB)</description>
+        <eyeCatch>HBD_RW</eyeCatch>
+        <physicalOffset>0x401000</physicalOffset>
+        <physicalRegionSize>0x24000</physicalRegionSize>
+        <side>A</side>
         <ecc/>
     </section>
     <section>
