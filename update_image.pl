@@ -13,6 +13,10 @@ my $hb_binary_dir = "";
 my $sbe_binary_dir = "";
 my $targeting_binary_filename = "";
 my $targeting_binary_source = "";
+my $targeting_RO_binary_filename = "";
+my $targeting_RO_binary_source = "";
+my $targeting_RW_binary_filename = "";
+my $targeting_RW_binary_source = "";
 my $sbe_binary_filename = "";
 my $sbec_binary_filename = "";
 my $wink_binary_filename = "";
@@ -72,6 +76,22 @@ while (@ARGV > 0){
     }
     elsif (/^-targeting_binary_source/i){
         $targeting_binary_source = $ARGV[1] or die "Bad command line arg given: expecting a config type.\n";
+        shift;
+    }
+    elsif (/^-targeting_RO_binary_filename/i){
+        $targeting_RO_binary_filename = $ARGV[1] or die "Bad command line arg given: expecting a config type.\n";
+        shift;
+    }
+    elsif (/^-targeting_RO_binary_source/i){
+        $targeting_RO_binary_source = $ARGV[1] or die "Bad command line arg given: expecting a config type.\n";
+        shift;
+    }
+    elsif (/^-targeting_RW_binary_filename/i){
+        $targeting_RW_binary_filename = $ARGV[1] or die "Bad command line arg given: expecting a config type.\n";
+        shift;
+    }
+    elsif (/^-targeting_RW_binary_source/i){
+        $targeting_RW_binary_source = $ARGV[1] or die "Bad command line arg given: expecting a config type.\n";
         shift;
     }
     elsif (/^-sbe_binary_filename/i){
@@ -235,8 +255,10 @@ sub processConvergedSections {
     $sections{HBB}{out}         = "$scratch_dir/hostboot.header.bin.ecc";
     $sections{HBI}{in}          = "$hb_image_dir/img/hostboot_extended.bin";
     $sections{HBI}{out}         = "$scratch_dir/hostboot_extended.header.bin.ecc";
-    $sections{HBD}{in}          = "$op_target_dir/$targeting_binary_source";
-    $sections{HBD}{out}         = "$scratch_dir/$targeting_binary_filename";
+    $sections{HBD_RO}{in}       = "$op_target_dir/$targeting_RO_binary_source";
+    $sections{HBD_RO}{out}      = "$scratch_dir/$targeting_RO_binary_filename";
+    $sections{HBD_RW}{in}       = "$op_target_dir/$targeting_RW_binary_source";
+    $sections{HBD_RW}{out}      = "$scratch_dir/$targeting_RW_binary_filename";
     $sections{SBE}{in}          = "$sbePreEcc";
     $sections{SBE}{out}         = "$scratch_dir/$sbe_binary_filename";
     $sections{PAYLOAD}{in}      = "$payload.bin";
@@ -404,7 +426,7 @@ if ($release ne "p8") {
 }
 else
 {
-    # Inject ECC into HBD (hostboot targeting) output binary
+    # Inject ECC into HBD_RO (hostboot targeting) output binary
     run_command("dd if=$op_target_dir/$targeting_binary_source of=$scratch_dir/$targeting_binary_source ibs=4k conv=sync");
     run_command("ecc --inject $scratch_dir/$targeting_binary_source --output $scratch_dir/$targeting_binary_filename --p8");
 
